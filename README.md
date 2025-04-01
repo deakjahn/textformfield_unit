@@ -63,6 +63,20 @@ TextFormUnitField<SizeUnits>(
 
 When it calls back for validation or saving, it passes a `ValueWithUnit<T>` value where `T` is our unit type.
 
+You can set the value of the field by setting `text` on the controller, as usual (eg. with nice formatting of the value):
+
+```dart
+controller.text = NumberFormat.decimalPattern().format(newValue);
+```
+
+If you use a `TextFormUnitController<T>` instead of a standard `TextEditingController`, you can also change the unit (with or without making a conversion) with:
+
+```dart
+setUnit(T unit, {bool convert = false})
+```
+
+Make sure you specify the `T` unit type when you create the controller or you get an exception.
+
 # Support
 
 If you like this package, please consider supporting it.

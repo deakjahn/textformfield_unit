@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.4] - 2025-04-01
+
+* Controller with setUnit().
+
 ## [1.0.3] - 2024-05-15
 
 * Upgrade dependent packages.

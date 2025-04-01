@@ -49,12 +49,12 @@ class _MyHomePageState extends State<MyHomePage> {
     SizeUnits.Rod: 'rods',
   };
   final formKey = GlobalKey<FormState>();
-  late TextEditingController controller;
+  late TextFormUnitController controller;
 
   @override
   void initState() {
     super.initState();
-    controller = TextEditingController(text: NumberFormat.decimalPattern().format(156.25));
+    controller = TextFormUnitController<SizeUnits>(text: NumberFormat.decimalPattern().format(156.25));
   }
 
   @override
@@ -139,6 +139,14 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ],
                 )),
+            ElevatedButton(
+              onPressed: () => controller.setUnit(SizeUnits.Barleycorn),
+              child: const Text('Change to barleycorns'),
+            ),
+            ElevatedButton(
+              onPressed: () => controller.setUnit(SizeUnits.Barleycorn, convert: true),
+              child: const Text('Convert to barleycorns'),
+            ),
             ElevatedButton(
               onPressed: () {
                 if (formKey.currentState!.validate()) {

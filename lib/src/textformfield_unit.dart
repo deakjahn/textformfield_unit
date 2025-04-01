@@ -5,8 +5,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart' show NumberFormat;
 
-typedef TextFormUnitFieldConverter<T> = double Function(
-    T fromUnit, T toUnit, double fromValue);
+import 'controller.dart';
+
+typedef TextFormUnitFieldConverter<T> = double Function(T fromUnit, T toUnit, double fromValue);
 
 class TextFormUnitField<TUnit> extends StatefulWidget {
   // Text field
@@ -100,8 +101,7 @@ class TextFormUnitField<TUnit> extends StatefulWidget {
   final BorderRadius? borderRadius;
 
   // Operation
-  final double Function(TUnit fromUnit, TUnit toUnit, double fromValue)
-      converter;
+  final double Function(TUnit fromUnit, TUnit toUnit, double fromValue) converter;
 
   const TextFormUnitField({
     super.key,
@@ -194,16 +194,14 @@ class TextFormUnitField<TUnit> extends StatefulWidget {
     required this.converter,
   });
 
-  static Widget _defaultContextMenuBuilder(
-      BuildContext context, EditableTextState editableTextState) {
+  static Widget _defaultContextMenuBuilder(BuildContext context, EditableTextState editableTextState) {
     return AdaptiveTextSelectionToolbar.editableText(
       editableTextState: editableTextState,
     );
   }
 
   @override
-  State<TextFormUnitField<TUnit>> createState() =>
-      _TextFormUnitFieldState<TUnit>();
+  State<TextFormUnitField<TUnit>> createState() => _TextFormUnitFieldState<TUnit>();
 }
 
 class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
@@ -212,7 +210,12 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
   @override
   void initState() {
     super.initState();
+
     unitValue = widget.initialUnit;
+    if (widget.controller is TextFormUnitController) {
+      final _controller = widget.controller as TextFormUnitController<TUnit>;
+      _controller.setUnit = doSetUnit;
+    }
   }
 
   @override
@@ -286,8 +289,7 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
         onTap: widget.onTap,
         onTapOutside: widget.onTapOutside,
         onEditingComplete: widget.onEditingComplete,
-        onFieldSubmitted: (value) =>
-            widget.onFieldSubmitted?.call(_parse(value)),
+        onFieldSubmitted: (value) => widget.onFieldSubmitted?.call(_parse(value)),
         onSaved: (value) => widget.onSaved?.call(_parse(value)),
         validator: (value) => widget.validator?.call(_parse(value)),
         inputFormatters: widget.inputFormatters,
@@ -319,7 +321,7 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
         dragStartBehavior: widget.dragStartBehavior,
         contentInsertionConfiguration: widget.contentInsertionConfiguration,
         clipBehavior: widget.clipBehavior,
-        scribbleEnabled: widget.scribbleEnabled,
+        stylusHandwritingEnabled: widget.scribbleEnabled,
         canRequestFocus: widget.canRequestFocus,
       );
 
@@ -344,13 +346,19 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
   void onUnitChanged(TUnit? unit) {
     if (unitValue != null && unit != null) {
       final currentValue = _parseDoubleLocale(widget.controller.text);
-      final newValue =
-          widget.converter.call(unitValue as TUnit, unit, currentValue);
+      final newValue = widget.converter.call(unitValue as TUnit, unit, currentValue);
       setState(() {
         widget.controller.text = NumberFormat.decimalPattern().format(newValue);
         unitValue = unit;
       });
     }
+  }
+
+  void doSetUnit(TUnit unit, {bool convert = false}) {
+    if (convert)
+      onUnitChanged(unit);
+    else
+      setState(() => unitValue = unit);
   }
 }
 
