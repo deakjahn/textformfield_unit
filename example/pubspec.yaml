@@ -16,7 +16,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  textformfield_unit: ^1.0.4
+  textformfield_unit: ^1.0.5
   flutter_lints: ^5.0.0
 
 dependency_overrides:

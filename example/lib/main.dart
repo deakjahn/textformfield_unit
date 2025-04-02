@@ -140,7 +140,10 @@ class _MyHomePageState extends State<MyHomePage> {
                   ],
                 )),
             ElevatedButton(
-              onPressed: () => controller.setUnit(SizeUnits.Barleycorn),
+              onPressed: () {
+                controller.setValue(256.25);
+                controller.setUnit(SizeUnits.Barleycorn);
+              },
               child: const Text('Change to barleycorns'),
             ),
             ElevatedButton(

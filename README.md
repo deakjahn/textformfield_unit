@@ -69,10 +69,16 @@ You can set the value of the field by setting `text` on the controller, as usual
 controller.text = NumberFormat.decimalPattern().format(newValue);
 ```
 
-If you use a `TextFormUnitController<T>` instead of a standard `TextEditingController`, you can also change the unit (with or without making a conversion) with:
+If you use a `TextFormUnitController<T>` instead of a standard `TextEditingController`, you can also
 
 ```dart
-setUnit(T unit, {bool convert = false})
+controller.doSetValue(double value)
+```
+
+that does exactly the above for you, or you can change the unit (with or without making a conversion) with:
+
+```dart
+controller.setUnit(T unit, {bool convert = false})
 ```
 
 Make sure you specify the `T` unit type when you create the controller or you get an exception.

@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.5] - 2025-04-02
+
+* Controller with setValue().
+
 ## [1.0.4] - 2025-04-01
 
 * Controller with setUnit().

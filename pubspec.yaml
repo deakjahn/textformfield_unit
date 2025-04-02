@@ -1,6 +1,6 @@
 name: textformfield_unit
 description: A TextFormField with units.
-version: 1.0.4
+version: 1.0.5
 homepage: https://github.com/deakjahn/textformfield_unit
 
 environment:
