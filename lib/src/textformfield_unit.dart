@@ -47,6 +47,8 @@ class TextFormUnitField<TUnit> extends StatefulWidget {
   final FormFieldValidator<ValueWithUnit<TUnit>>? validator;
   final List<TextInputFormatter>? inputFormatters;
   final bool? enabled;
+  final bool? filled;
+  final Color? fillColor;
   final double cursorWidth;
   final double? cursorHeight;
   final Radius? cursorRadius;
@@ -141,6 +143,8 @@ class TextFormUnitField<TUnit> extends StatefulWidget {
     this.validator,
     this.inputFormatters,
     this.enabled,
+    this.filled,
+    this.fillColor,
     this.cursorWidth = 2.0,
     this.cursorHeight,
     this.cursorRadius,
@@ -229,6 +233,8 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
           labelText: widget.labelText,
           icon: widget.icon,
           enabled: widget.enabled ?? true,
+          filled: widget.filled,
+          fillColor: widget.fillColor,
           suffix: DropdownButtonHideUnderline(
             child: DropdownButton<TUnit>(
               items: [
