@@ -1,9 +1,12 @@
 # Changelog
 
+## [1.0.7] - 2025-04-28
+
+* Screenshot.
+
 ## [1.0.6] - 2025-04-28
 
 * Controller with doSetValueUnit().
-* Screenshot.
 
 ## [1.0.5] - 2025-04-02
 

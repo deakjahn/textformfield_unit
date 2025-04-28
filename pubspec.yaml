@@ -1,6 +1,6 @@
 name: textformfield_unit
 description: A TextFormField with units.
-version: 1.0.6
+version: 1.0.7
 homepage: https://github.com/deakjahn/textformfield_unit
 
 environment:
@@ -24,6 +24,10 @@ flutter:
 
 funding:
   - https://buymeacoffee.com/deakjahn
+
+screenshots:
+  - description: 'Example widget.'
+    path: screenshots/screen.png
 
 topics:
   - flutter
