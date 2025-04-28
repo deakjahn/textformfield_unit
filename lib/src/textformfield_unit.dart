@@ -216,12 +216,12 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
       final _controller = widget.controller as TextFormUnitController<TUnit>;
       _controller.setValue = doSetValue;
       _controller.setUnit = doSetUnit;
+      _controller.setValueUnit = doSetValueUnit;
     }
   }
 
   @override
-  Widget build(BuildContext context) =>
-      TextFormField(
+  Widget build(BuildContext context) => TextFormField(
         controller: widget.controller,
         initialValue: widget.initialValue,
         focusNode: widget.textFocusNode,
@@ -360,11 +360,16 @@ class _TextFormUnitFieldState<TUnit> extends State<TextFormUnitField<TUnit>> {
     widget.controller.text = NumberFormat.decimalPattern().format(value);
   }
 
-  void doSetUnit(TUnit unit, {bool convert = false}) {
+  void doSetUnit(TUnit? unit, {bool convert = false}) {
     if (convert)
       onUnitChanged(unit);
     else
       setState(() => unitValue = unit);
+  }
+
+  void doSetValueUnit(ValueWithUnit<TUnit> value) {
+    doSetValue(value.value);
+    doSetUnit(value.unit);
   }
 }
 
