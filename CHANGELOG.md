@@ -1,5 +1,9 @@
 # Changelog
 
+## [1.0.8] - 2025-05-23
+
+* Upgrade dependent packages.
+
 ## [1.0.7] - 2025-04-28
 
 * Screenshot.
