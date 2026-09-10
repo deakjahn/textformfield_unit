@@ -1,6 +1,6 @@
 name: textformfield_unit
 description: A TextFormField with units.
-version: 1.0.8
+version: 1.0.9
 homepage: https://github.com/deakjahn/textformfield_unit
 
 environment:
@@ -17,7 +17,8 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
+  material_ui: ^1.2.0
 
 flutter:
   uses-material-design: true

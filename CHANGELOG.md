@@ -1,5 +1,11 @@
 # Changelog
 
+## [1.0.9] - 2026-09-10
+
+* Material_ui support
+* AGP 5, Kotlin DSL.
+* Dependent upgrades.
+
 ## [1.0.8] - 2025-05-23
 
 * Upgrade dependent packages.
@@ -14,7 +20,7 @@
 
 ## [1.0.5] - 2025-04-02
 
-* Controller with setValue().
+* Controller with setValue().[CHANGELOG.md](CHANGELOG.md)
 
 ## [1.0.4] - 2025-04-01
 

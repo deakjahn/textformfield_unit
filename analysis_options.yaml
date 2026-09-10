@@ -1,7 +1,7 @@
 include: package:flutter_lints/flutter.yaml
 
 analyzer:
-  exclude: [build/**]
+  exclude: [build/**, android/**, ios/**, web/**, windows/**, macos/**, linux/**]
   errors:
     deprecated_member_use_from_same_package: ignore
     lines_longer_than_80_chars: ignore
